@@ -1,0 +1,19 @@
+{
+  "name": "photo-frontend",
+  "version": "1.0.0",
+  "description": "Thibault Jamet Photography",
+  "author": "Thibault Jamet",
+  "license": "MIT",
+  "scripts": {
+    "build": "roc build",
+    "dev": "roc dev",
+    "start": "roc start"
+  },
+  "dependencies": {
+    "roc-package-web-app-react": "^1.0.0-beta.10"
+  },
+  "devDependencies": {
+    "roc-package-web-app-react-dev": "^1.0.0-beta.10",
+    "roc-plugin-style-sass": "^1.0.0-beta.3"
+  }
+}
