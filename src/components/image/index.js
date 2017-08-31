@@ -26,6 +26,7 @@ export default class Thumbnail extends Component {
     src: PropTypes.string.isRequired,
     onLoad: PropTypes.func,
     onError: PropTypes.func,
+    onClick: PropTypes.func,
   }
 
 
@@ -90,7 +91,11 @@ export default class Thumbnail extends Component {
   }
   render() {
     if (this.state.status == Status.LOADED) {
-      return <div className={styles.thumbnail} style={{ backgroundImage: "url(" + this.props.src + ")" }} />
+      return <div className={styles.thumbnail} style={{ backgroundImage: "url(" + this.props.src + ")" }} onClick={() => {
+        if (this.props.onCLick) {
+          this.props.onCLick()
+        }
+      }} />
     } else {
       return null;
     }
