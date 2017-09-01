@@ -91,10 +91,8 @@ export default class Thumbnail extends Component {
   }
   render() {
     if (this.state.status == Status.LOADED) {
-      return <div className={styles.thumbnail} style={{ backgroundImage: "url(" + this.props.src + ")" }} onClick={() => {
-        if (this.props.onCLick) {
-          this.props.onCLick()
-        }
+      return <div className={styles.thumbnail} style={{ backgroundImage: "url(" + this.props.src + ")" }} onClick={(event) => {
+        if (this.props.onClick) this.props.onClick(event);
       }} />
     } else {
       return null;
