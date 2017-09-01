@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import styles from './style.scss';
 
 import Gallery from '../../components/gallery';
+import AlgoliaNotif from '../../components/algoliaNotif';
 
 import logo from '../../../img/logo.png';
 
@@ -20,6 +21,7 @@ export default class Photos extends Component {
     render() {
         return (
             <div className={styles.fullHeight}>
+                <AlgoliaNotif/>
                 <div className={styles.logoFrame}>
                     <span className={styles.logoHelper}></span>
                     <img src={logo} className={styles.logo} />
