@@ -2,13 +2,32 @@
 /* eslint-disable react/prefer-stateless-function */
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 import styles from './style.scss';
 import Lightbox from 'react-images';
 import Mosaic from '../mosaic';
 
+function load() {
+    return {};
+}
+
+function mapStateToProps(state) {
+    return {
+        images: state.imageLoader,
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ load }, dispatch);
+}
+
+@connect(mapStateToProps, mapDispatchToProps)
 export default class App extends Component {
     static propTypes = {
+        images: PropTypes.number.isRequired,
+        load: PropTypes.func.isRequired,
         images: PropTypes.array.isRequired,
     }
 
@@ -18,6 +37,7 @@ export default class App extends Component {
     }
 
     render() {
+        // TODO: move this to global computation. No need to recompute it for each image change
         var imgs = this.props.images.map((elt) => (
             { src: elt.sizes.large, thumbnail: elt.sizes.medium, key: elt.objectID }
         ))
