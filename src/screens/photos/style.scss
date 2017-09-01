@@ -1,0 +1,33 @@
+.gallery {
+    margin-top: -340px;
+    position: relative;
+}
+
+.galleryHelper {
+    height: 100%;
+    display: inline-block;
+}
+
+.fullHeight {
+    height: 100%;
+}
+
+.logoFrame {
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.logoHelper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.logo {
+    vertical-align: middle;
+    max-width: 90%;
+}
