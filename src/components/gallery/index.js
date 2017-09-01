@@ -9,9 +9,7 @@ import styles from './style.scss';
 import Lightbox from 'react-images';
 import Mosaic from '../mosaic';
 
-function load() {
-    return {};
-}
+import {loadNextImages} from '../../redux/imageLoader';
 
 function mapStateToProps(state) {
     return {
@@ -20,20 +18,21 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ load }, dispatch);
+    return bindActionCreators({ loadNextImages }, dispatch);
 }
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class App extends Component {
     static propTypes = {
         images: PropTypes.number.isRequired,
-        load: PropTypes.func.isRequired,
+        loadNextImages: PropTypes.func.isRequired,
         images: PropTypes.array.isRequired,
     }
 
     constructor(props) {
         super(props);
         this.state = { opened: false, current: 0 };
+        this.props.loadNextImages(0);
     }
 
     render() {
