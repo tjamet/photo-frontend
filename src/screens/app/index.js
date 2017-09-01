@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 
-import Navbar from '../../components/navbar';
 import styles from './style.scss';
+
+import Background from '../../components/background';
+
 
 export default class App extends Component {
   static propTypes = {
@@ -14,13 +16,13 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className={styles.main}>
+      <div className={styles.fullScreen}>
         <Helmet
           link={[{
             rel: 'icon', href: '/favicon.png',
           }]}
         />
-        <Navbar />
+        <Background />
         { this.props.children }
       </div>
     );
