@@ -1,0 +1,11 @@
+version: "3"
+services:
+    node:
+        build: .
+    haproxy:
+        build: haproxy
+        depends_on:
+            - node
+        ports:
+            - 80:80
+            - 443:443
