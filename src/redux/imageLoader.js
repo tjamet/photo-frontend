@@ -1,24 +1,28 @@
 const ADD_SEARCH_HITS = 'ADD_SEARCH_HITS';
+const CLEAR_SEARCH_HITS = 'CLEAR_SEARCH_HITS';
 
 var algoliasearch = require('algoliasearch/lite');
 var client = algoliasearch("TDAMRV2O9W", "02fde40e77ff0c2404cce68756c092e1");
 var index = client.initIndex('gallery');
 
-export default function imageLoader(state = [], action = {}) {
+export default function imageLoader(state = {images:[]}, action = {}) {
     switch (action.type) {
         case ADD_SEARCH_HITS:
             for (var elt of action.hits) {
                 var found = false;
-                for (var oldElt of state) {
+                for (var oldElt of state.images) {
                     if (oldElt.objectID == elt.objectID) {
                         found = true
                     }
                 }
                 if (!found) {
-                    state = state.concat([elt])
+                    state.images = state.images.concat([elt])
                 }
             }
-            return state;
+            return Object.assign({}, state, {images: state.images});
+
+        case CLEAR_SEARCH_HITS:
+            return Object.assign({}, state, {images: []})
         default:
             return state;
     }
@@ -26,14 +30,17 @@ export default function imageLoader(state = [], action = {}) {
 
 export function loadNextImages(page = 0) {
     return function (dispatch) {
-        index.search({ query: "", page: page },
+        if (page == 0) {
+            dispatch(clearImages());
+        }
+        index.search({ query: query, page: page, hitsPerPage: 200 },
             function searchDone(err, content) {
                 if (err) {
                     console.error(err);
                     return;
                 }
                 dispatch(addHits(content.hits))
-                if (content.page < content.nbPages) dispatch(loadNextImages(page + 1))
+                if (content.page <= content.nbPages) dispatch(loadNextImages(page + 1))
             }
         )
     }
@@ -41,4 +48,8 @@ export function loadNextImages(page = 0) {
 
 export function addHits(hits) {
     return { type: ADD_SEARCH_HITS, hits };
+}
+
+export function clearImages() {
+    return { type: CLEAR_SEARCH_HITS }
 }

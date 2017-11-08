@@ -13,7 +13,7 @@ import {loadNextImages} from '../../redux/imageLoader';
 
 function mapStateToProps(state) {
     return {
-        images: state.imageLoader,
+        images: state.imageLoader.images,
     };
 }
 
@@ -24,7 +24,6 @@ function mapDispatchToProps(dispatch) {
 @connect(mapStateToProps, mapDispatchToProps)
 export default class App extends Component {
     static propTypes = {
-        images: PropTypes.number.isRequired,
         loadNextImages: PropTypes.func.isRequired,
         images: PropTypes.array.isRequired,
     }
