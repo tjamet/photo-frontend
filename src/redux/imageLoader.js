@@ -1,5 +1,6 @@
 const ADD_SEARCH_HITS = 'ADD_SEARCH_HITS';
 const CLEAR_SEARCH_HITS = 'CLEAR_SEARCH_HITS';
+const STORE_FACETS_SEARCH_HITS = 'CLEAR_SEARCH_HITS';
 
 var algoliasearch = require('algoliasearch/lite');
 var client = algoliasearch("TDAMRV2O9W", "02fde40e77ff0c2404cce68756c092e1");
@@ -23,23 +24,27 @@ export default function imageLoader(state = {images:[]}, action = {}) {
 
         case CLEAR_SEARCH_HITS:
             return Object.assign({}, state, {images: []})
+
+        case STORE_FACETS_SEARCH_HITS:
+            return Object.assign({}, state, {keywords: action.keywords})
         default:
             return state;
     }
 }
 
-export function loadNextImages(page = 0) {
+export function loadNextImages(page = 0, query="") {
     return function (dispatch) {
         if (page == 0) {
             dispatch(clearImages());
         }
-        index.search({ query: query, page: page, hitsPerPage: 200 },
+        index.search({ query: query, page: page, hitsPerPage: 200, facets: '["Keywords"]' },
             function searchDone(err, content) {
                 if (err) {
                     console.error(err);
                     return;
                 }
                 dispatch(addHits(content.hits))
+                dispatch(storeFacets(facets))
                 if (content.page <= content.nbPages) dispatch(loadNextImages(page + 1))
             }
         )
@@ -52,4 +57,8 @@ export function addHits(hits) {
 
 export function clearImages() {
     return { type: CLEAR_SEARCH_HITS }
+}
+
+export function storeFacets(keywords) {
+    return { type: STORE_FACETS_SEARCH_HITS, keywords }
 }
