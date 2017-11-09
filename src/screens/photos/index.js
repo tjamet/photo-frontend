@@ -1,7 +1,9 @@
 // React Hot Reload does not support stateless function components as of now
 /* eslint-disable react/prefer-stateless-function */
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import styles from './style.scss';
 
 import theme from '../../theme';
@@ -23,8 +25,29 @@ import ImageFilter from '../../components/imageFilter';
 
 import logo from '../../../img/logo.png';
 
+const styl = {
+    hidden: {
+        display: 'none',
+    },
+    nohelper: {
+        height: '340px',
+    }
+};
+
+function mapStateToProps(state) {
+    return {
+        filtered_keywords: state.imageLoader.filtered_keywords,
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({}, dispatch);
+}
+
+@connect(mapStateToProps, mapDispatchToProps)
 export default class Photos extends Component {
     static propTypes = {
+        filtered_keywords: PropTypes.array.isRequired,
     }
 
     constructor(props) {
@@ -33,6 +56,12 @@ export default class Photos extends Component {
     }
 
     render() {
+        var logoStyle = {}
+        var helperStyle = {}
+        if (this.props.filtered_keywords.length>0) {
+            logoStyle = styl.hidden
+            helperStyle = styl.nohelper
+        }
         return (
             <div className={styles.fullHeight}>
                 <AlgoliaNotif />
@@ -50,11 +79,11 @@ export default class Photos extends Component {
                         </IconMenu>
                     </AppBar>
                 </MuiThemeProvider>
-                <div className={styles.logoFrame}>
+                <div className={styles.logoFrame}  style={logoStyle}>
                     <span className={styles.logoHelper}></span>
                     <img src={logo} className={styles.logo} />
                 </div>
-                <span className={styles.galleryHelper} />
+                <span className={styles.galleryHelper} style={helperStyle} />
                 <div className={styles.gallery}>
                     <Gallery />
                 </div>
