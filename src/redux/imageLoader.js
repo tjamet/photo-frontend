@@ -68,7 +68,7 @@ export function loadNextImages(page = 0, query = "", keywords = []) {
             dispatch(clearImages());
         }
         dispatch(setSearchedString(query))
-        query = query + keywords.reduce((r,n)=>r+" "+n, "")
+        query = query + keywords.map((e)=>'"'+e+'"').reduce((r,n)=>r+" "+n, "")
         index.search({ query: query, page: page, hitsPerPage: 200, facets: '["Keywords"]' },
             function searchDone(err, content) {
                 if (err) {
