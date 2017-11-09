@@ -28,10 +28,13 @@ export default class App extends Component {
         images: PropTypes.array.isRequired,
     }
 
+    componentDidMount(){
+        this.props.loadNextImages(0);
+    }
+
     constructor(props) {
         super(props);
         this.state = { opened: false, current: 0 };
-        this.props.loadNextImages(0);
     }
 
     render() {
