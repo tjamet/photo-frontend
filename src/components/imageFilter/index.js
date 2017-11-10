@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import theme from '../../theme';
 import TextField from 'material-ui/TextField';
 import Chip from 'material-ui/Chip';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
@@ -66,8 +67,21 @@ export default class ImageFilter extends Component {
         sortable.sort(function (a, b) {
             return b[1] - a[1];
         });
+        var displayedFields = [
+            "shooting",
+            "spain",
+            "barcelona",
+            "france",
+            "paris",
+            "dj",
+            "studio",
+            "mode",
+            "sports",
+            "portrait",
+        ]
 
         sortable = sortable.filter((elt) => !this.props.filtered_keywords.includes(elt[0]))
+        sortable = sortable.filter((e)=>displayedFields.includes(e[0].toLowerCase()))
 
         return <div>
             <div style={styles.wrapper}>
