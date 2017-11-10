@@ -112,11 +112,6 @@ export default class ImageFilter extends Component {
                         <ListItem
                             key={idx}
                             primaryText={elt[0]}
-                            rightIconButton={
-                                <FloatingActionButton mini={true} disabled={true}>
-                                    {elt[1]}
-                                </FloatingActionButton>
-                            }
                             onClick={(event) => this.props.addFilteredKeyword(elt[0])}
                         />
 
