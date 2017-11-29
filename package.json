@@ -14,7 +14,7 @@
     "material-ui": "^0.19.4",
     "react-grid-layout": "^0.16.0",
     "react-images": "^0.5.12",
-    "roc-package-web-app-react": "^1.0.0-beta.10"
+    "roc-package-web-app-react": "^1.0.4"
   },
   "devDependencies": {
     "roc-package-web-app-react-dev": "^1.0.0-beta.10",
