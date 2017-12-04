@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "algoliasearch": "^3.25.1",
-    "material-ui": "^0.19.4",
+    "material-ui": "^0.20.0",
     "react-grid-layout": "^0.16.6",
     "react-images": "^0.5.17",
     "roc-package-web-app-react": "^1.1.0"
