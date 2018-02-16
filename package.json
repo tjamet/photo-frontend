@@ -12,7 +12,7 @@
   "dependencies": {
     "algoliasearch": "^3.24.7",
     "material-ui": "^0.19.4",
-    "react-grid-layout": "^0.16.0",
+    "react-grid-layout": "^0.16.4",
     "react-images": "^0.5.12",
     "roc-package-web-app-react": "^1.0.0-beta.10"
   },
