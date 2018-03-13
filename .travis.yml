@@ -1,0 +1,13 @@
+language: javascript
+
+sudo: required
+
+services:
+- docker
+addons:
+  apt:
+    packages:
+    - docker-ce
+
+script:
+- docker build -t front .
