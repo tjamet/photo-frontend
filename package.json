@@ -18,6 +18,6 @@
   },
   "devDependencies": {
     "roc-package-web-app-react-dev": "^1.0.0",
-    "roc-plugin-style-sass": "^1.0.0-beta.3"
+    "roc-plugin-style-sass": "^1.0.0"
   }
 }
