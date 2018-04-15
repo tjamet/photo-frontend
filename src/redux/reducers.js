@@ -1,3 +1,6 @@
-export clicker from './clicker';
-export imageLoader from './imageLoader';
-export search from './imageLoader';
+import { combineReducers } from 'redux';
+
+import imageLoader from './imageLoader';
+import search from './imageLoader';
+
+export default combineReducers({imageLoader, search});

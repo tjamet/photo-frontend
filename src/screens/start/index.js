@@ -52,7 +52,6 @@ export default class Start extends Component {
             Dispatch a click action by hitting the button below!
           </p>
 
-          <Clicker />
 
           <h4>Get styling</h4>
           <p>

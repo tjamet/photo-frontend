@@ -39,7 +39,7 @@ export default class Info extends Component {
                 message={<a href="https://www.algolia.com" style={{}}><img style={{ marginTop: 10, width: 200 }} src="https://www.algolia.com/static_assets/images/press/downloads/search-by-algolia-white.png" /></a>}
                 action={<Done color={grey50} />}
                 autoHideDuration={5000}
-                onActionTouchTap={() => this.close()}
+                onActionClick={() => this.close()}
                 onRequestClose={(reason) => this.close(reason)}
             />
         </MuiThemeProvider>

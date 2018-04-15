@@ -1,6 +1,7 @@
 const CLICKED = 'CLICKED';
 
 export default function clicker(state = 0, action = { increment: 1 }) {
+
   if (action.type === CLICKED) {
     return state + action.increment;
   }

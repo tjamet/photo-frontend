@@ -8,6 +8,8 @@ import styles from './style.scss';
 
 import Background from '../../components/background';
 
+import favicon from './favicon.png';
+
 
 export default class App extends Component {
   static propTypes = {
@@ -19,7 +21,7 @@ export default class App extends Component {
       <div className={styles.fullScreen}>
         <Helmet
           link={[{
-            rel: 'icon', href: '/favicon.png',
+            rel: 'icon', href: favicon,
           }]}
         />
         <Background />

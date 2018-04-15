@@ -1,6 +1,5 @@
 FROM node AS build
 
-RUN npm install -g roc@next
 RUN mkdir /src
 WORKDIR /src
 ADD package* /src/
@@ -8,13 +7,8 @@ ADD package* /src/
 RUN npm install
 
 ADD . /src
-RUN roc build
+RUN npm run-script build
 
-# FROM node:alpine
-# RUN npm install -g roc
-# COPY roc.config.js /app/roc.config.js
-# COPY --from=build /src/build /app
-# WORKDIR /app
-ENTRYPOINT ["roc"]
-CMD ["start"]
-EXPOSE 3000
+
+FROM nginx:alpine
+COPY --from=build /src/dist /usr/share/nginx/html
