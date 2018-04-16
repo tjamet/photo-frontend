@@ -10,7 +10,7 @@
     "start": "roc start"
   },
   "dependencies": {
-    "algoliasearch": "^3.25.1",
+    "algoliasearch": "^3.27.0",
     "material-ui": "^0.20.0",
     "react-grid-layout": "^0.16.6",
     "react-images": "^0.5.17",
