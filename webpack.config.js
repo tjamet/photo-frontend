@@ -31,11 +31,27 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: "babel-loader"
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['react'],
+              plugins: ['transform-class-properties', 'transform-decorators-legacy']
+            }
+          }
+        ],
       }, {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: "babel-loader"
+        loader: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['react'],
+              plugins: ['transform-class-properties', 'transform-decorators-legacy']
+            }
+          }
+        ],
       },{
         test: /\.scss$/,
         use: [{
