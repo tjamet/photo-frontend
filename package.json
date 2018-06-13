@@ -10,7 +10,7 @@
     "start": "webpack-dev-server --mode=development"
   },
   "dependencies": {
-    "algoliasearch": "^3.27.1",
+    "algoliasearch": "^3.28.0",
     "material-ui": "^0.20.1",
     "material-ui-snackbar-provider": "^0.1.3",
     "prop-types": "^15.6.1",
