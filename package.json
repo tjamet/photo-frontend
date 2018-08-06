@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "algoliasearch": "^3.27.1",
-    "material-ui": "^0.20.1",
+    "material-ui": "^0.20.2",
     "material-ui-snackbar-provider": "^0.1.3",
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
