@@ -15,7 +15,7 @@
     "material-ui-snackbar-provider": "^0.1.3",
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
-    "react-dom": "^16.4.0",
+    "react-dom": "^16.6.3",
     "react-grid-layout": "^0.16.6",
     "react-helmet": "^5.2.0",
     "react-images": "^0.5.17",
